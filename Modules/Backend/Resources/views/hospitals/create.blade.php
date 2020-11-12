@@ -6,7 +6,7 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title">Add Hospital</h4>
             </div>
-            {!! Form::open(array('route' => 'hospitals.store','method'=>'POST','class'=>'form-horizontal bootstrap-modal-form')) !!}
+            {!! Form::open(array('route' => 'hospitals.store','method'=>'POST','class'=>'form-horizontal bootstrap-modal-form','enctype'=>'multipart/form-data')) !!}
             @include('backend::hospitals.form')
             {!! Form::close() !!}
 

@@ -49,6 +49,13 @@ class HospitalController extends Controller
      */
     public function store(CreateHospitalRequest $request)
     {
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/storage/galeryImages/');
+            $image->move($destinationPath, $name);
+            $request['image'] = $name;
+        }
         return new StoreResponse($this->model->create($request->all()));
     }
 
