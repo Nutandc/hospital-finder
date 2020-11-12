@@ -19,6 +19,7 @@ class CreateHospitalsTable extends Migration
             $table->string('location');
             $table->string('opening_hour');
             $table->string('special_for');
+            $table->string('image');
             $table->timestamps();
         });
     }

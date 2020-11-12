@@ -19,6 +19,7 @@ class CreateDoctorsTable extends Migration
             $table->string('special_for');
             $table->string('designation');
             $table->string('detail');
+            $table->string('image');
             $table->timestamps();
         });
     }

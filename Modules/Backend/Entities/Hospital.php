@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+namespace Modules\Backend\Entities;
 
 class Hospital extends Model
 {

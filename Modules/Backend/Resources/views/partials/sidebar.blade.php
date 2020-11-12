@@ -8,25 +8,25 @@
         </li>
         @can('doctor-view')
             <li class="{{ Request::is('doctors','/doctors/*') ? 'active' : '' }}">
-                <a href="{{route('doctors.index')}}"><i class=" fa fa-user"></i>
+                <a href="{{route('doctors.index')}}"><i class="fa fa-user-md"></i>
                     <span>Doctors</span></a>
             </li>
         @endcan
         @can('disease-view')
             <li class="{{ Request::is('disease','/disease/*') ? 'active' : '' }}">
-                <a href="{{route('disease.index')}}"><i class="fa fa-user"></i>
+                <a href="{{route('disease.index')}}"><i class="fa fa-medkit"></i>
                     <span>Disease</span></a>
             </li>
         @endcan
         @can('hospital-view')
             <li class="{{ Request::is('hospitals','/hospitals/*') ? 'active' : '' }}">
-                <a href="{{route('hospitals.index')}}"><i class="fa fa-user"></i>
+                <a href="{{route('hospitals.index')}}"><i class="fa fa-h-square"></i>
                     <span>Hospital</span></a>
             </li>
         @endcan
         @can('symptom-view')
             <li class="{{ Request::is('symptoms','/symptoms/*') ? 'active' : '' }}">
-                <a href="{{route('symptoms.index')}}"><i class="fa fa-user"></i>
+                <a href="{{route('symptoms.index')}}"><i class="fa fa-wheelchair"></i>
                     <span>Symptom</span></a>
             </li>
         @endcan
