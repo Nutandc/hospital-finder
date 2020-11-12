@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>eVidyalays - Simplifying the Education System | Dedicated to Excellence | Home of Quality Schools | Solution
-        for Every Institutions</title>
+    <title>Hospital Finder</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
     <link rel="stylesheet" href="{{ URL::asset('css/open-iconic-bootstrap.min.css') }}">
-    <link rel="icon" href="favicon.jpg" type="image/jpg"/>
+    <link rel="icon" href="{{ URL::asset('images/logo.png') }}" type="image/jpg"/>
+{{--    src="{{ URL::asset('images/logo.png') }}--}}
     <link rel="stylesheet" href="{{ URL::asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('css/owl.theme.default.min.css') }}">
@@ -26,7 +26,8 @@
 
 <nav class="navbar navbar-expand-lg ftco_navbar ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}"><img height="30px" src="{{ URL::asset('img\logo.png') }}"></a>
+        <a class="navbar-brand" href="{{ url('/') }}">
+            <img height="30px" src="{{ URL::asset('images/logo.png') }}"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
@@ -35,8 +36,8 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Hospitals</a></li>
+                {{--                <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>--}}
                 <li class="nav-item"><a href="#" class="nav-link">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
                 <li class="nav-item cta">
