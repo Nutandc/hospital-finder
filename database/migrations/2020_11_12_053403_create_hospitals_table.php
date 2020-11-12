@@ -18,8 +18,11 @@ class CreateHospitalsTable extends Migration
             $table->string('name')->unique();
             $table->string('location');
             $table->string('opening_hour');
+            $table->string('phone')->nullable();
+            $table->string('address');
+            $table->string('detail')->nullable();
             $table->string('special_for');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

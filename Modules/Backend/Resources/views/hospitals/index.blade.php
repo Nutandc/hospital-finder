@@ -1,27 +1,27 @@
 @extends('backend::layouts.master')
 @section('header')
-    Doctors
+    Hospitals
 @stop
 @section('subHeader')
-    List of Doctors
+    List of Hospitals
 @stop
 @section('breadcrumb')
 @stop
 @section('content')
     @include('backend.partials.error')
-    @can('doctor-create')
-        @include('backend::doctors.create')
+    @can('hospital-create')
+        @include('backend::hospitals.create')
     @endcan
-    @can('doctor-edit')
-        @include('backend::doctors.edit')
+    @can('hospital-edit')
+        @include('backend::hospitals.edit')
     @endcan
     <div class="row">
         <div class="col-xs-12">
             <div class="box-header">
-                @can('doctor-create')
+                @can('hospital-create')
                     <button class="btn btn-primary pull-right btn-flat bootstrap-modal-form-open"
                             data-toggle="modal" data-target="#modal-create-class">
-                        Add Doctor
+                        Add Hospital
                     </button>
                 @endcan
             </div>
@@ -31,34 +31,34 @@
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Speciality</th>
-                            <th>Designation</th>
-                            <th>Email</th>
+                            <th>Location</th>
+                            <th>Opening Hour</th>
                             <th>Phone</th>
-                            <th>Address</th>
+                            <th>Special For</th>
+                            <th>Detail</th>
                             <th class="no-sort action-col">Action</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($doctors as $doctor)
+                        @foreach($hospitals as $hospital)
                             <tr>
-                                <td>{{ $doctor->name }}</td>
-                                <td>{{ $doctor->special_for }}</td>
-                                <td>{{ $doctor->designation }}</td>
-                                <td>{{ $doctor->email }}</td>
-                                <td>{{ $doctor->phone }}</td>
-                                <td>{{ $doctor->address }}</td>
+                                <td>{{ $hospital->name }}</td>
+                                <td>{{ $hospital->location }}</td>
+                                <td>{{ $hospital->opening_hour }}</td>
+                                <td>{{ $hospital->phone }}</td>
+                                <td>{{ $hospital->special_for }}</td>
+                                <td>{{ $hospital->detail }}</td>
                                 <td>
-                                    @can('doctor-edit')
+                                    @can('hospital-edit')
                                         <button class="btn btn-primary btn-flat edit-button btn-sm" data-toggle="modal"
-                                                data-target="#modal-edit" value="{{ $doctor['id'] }}"><i
+                                                data-target="#modal-edit" value="{{ $hospital['id'] }}"><i
                                                 class="fa fa-edit "></i></button>
                                     @endcan
-                                    @can('doctor-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['doctors.destroy', $doctor->id],
+                                    @can('hospital-delete')
+                                        {!! Form::open(['method' => 'DELETE','route' => ['hospitals.destroy', $hospital->id],
                                            'onsubmit' => "return confirm('Are you sure you want to delete?')",'style'=>"display:inline"]) !!}
                                         <button class="btn btn-danger btn-flat  btn-sm"
-                                                href="{{ route('doctors.destroy',$doctor->id) }}">
+                                                href="{{ route('hospitals.destroy',$hospital->id) }}">
                                             <i
                                                 class="fa fa-trash"></i></button>
                                         {!! Form::close() !!}
@@ -80,20 +80,21 @@
         $(document).ready(function () {
             $('#dataTable').on('click', '.edit-button', function () {
                 var id = $(this).val();
-                var url = "/doctors/" + id;
+                var url = "/hospitals/" + id;
                 $.ajax({
                     url: url,
                     method: "get"
                 }).done(function (response) {
                     $("#modal-edit input[name='name']").val(response.name);
                     $("#modal-edit input[name='special_for']").val(response.special_for);
-                    $("#modal-edit input[name='designation']").val(response.designation);
+                    $("#modal-edit input[name='location']").val(response.location);
+                    $("#modal-edit input[name='opening_hour']").val(response.opening_hour);
                     $("#modal-edit input[name='country']").val(response.country);
                     $("#modal-edit input[name='email']").val(response.email);
                     $("#modal-edit input[name='phone']").val(response.phone);
                     $("#modal-edit input[name='address']").val(response.address);
                     $("#modal-edit input[name='detail']").val(response.detail);
-                    $('#modal-edit form').attr('action', '{{ url('/doctors') }}' + '/' + id);
+                    $('#modal-edit form').attr('action', '{{ url('/hospitals') }}' + '/' + id);
                 });
             })
         });

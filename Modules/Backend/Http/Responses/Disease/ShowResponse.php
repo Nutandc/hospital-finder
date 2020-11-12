@@ -6,7 +6,7 @@
  * Time: 12:05 PM
  */
 
-namespace Modules\Backend\Http\Responses\Doctors;
+namespace Modules\Backend\Http\Responses\Disease;
 
 
 use Illuminate\Contracts\Support\Responsable;

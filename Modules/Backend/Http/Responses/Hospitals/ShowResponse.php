@@ -6,7 +6,7 @@
  * Time: 12:05 PM
  */
 
-namespace Modules\Backend\Http\Responses\Doctors;
+namespace Modules\Backend\Http\Responses\Hospitals;
 
 
 use Illuminate\Contracts\Support\Responsable;
@@ -31,8 +31,8 @@ class ShowResponse implements Responsable
             'id' => $this->model->id,
             'name' => $this->model->name,
             'special_for' => $this->model->special_for,
-            'designation' => $this->model->designation,
-            'country' => $this->model->country,
+            'opening_hour' => $this->model->opening_hour,
+            'location' => $this->model->location,
             'email' => $this->model->email,
             'phone' => $this->model->phone,
             'address' => $this->model->address,

@@ -18,11 +18,11 @@ class CreateDoctorsTable extends Migration
             $table->string('name');
             $table->string('special_for');
             $table->string('designation');
-            $table->string('detail');
+            $table->string('detail')->nullable();
             $table->string('email');
-            $table->string('phone');
-            $table->string('address');
-            $table->string('image');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('image')->nullable();
             $table->string('country');
             $table->timestamps();
         });

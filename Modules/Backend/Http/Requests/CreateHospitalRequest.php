@@ -4,7 +4,7 @@ namespace Modules\Backend\Http\Requests;
 
 use App\Requests\FormRequestForApi;
 
-class CreateDoctorRequest extends FormRequestForApi
+class CreateHospitalRequest extends FormRequestForApi
 {
     /**
      * Get the validation rules that apply to the request.
@@ -15,11 +15,11 @@ class CreateDoctorRequest extends FormRequestForApi
     {
         return [
             'name' => 'required|max:255|unique:doctors,name',
+            'location' => 'required|max:255',
+            'opening_hour' => 'required|max:255',
             'special_for' => 'required|max:255',
-            'designation' => 'required|max:255',
-            'email' => 'required|max:255',
+            'address' => 'required|max:255',
             'phone' => 'nullable',
-            'address' => 'nullable',
             'detail' => 'nullable',
             'image' => 'nullable',
         ];

@@ -3,12 +3,10 @@
 
 namespace Modules\Backend\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Modules\Backend\Entities\Classr;
 use Modules\Backend\Entities\Doctor;
 use Modules\Backend\Http\Requests\CreateClassRequest;
 use Modules\Backend\Http\Requests\CreateDoctorRequest;
-use Modules\Backend\Http\Requests\UpdateClassRequest;
 use Modules\Backend\Http\Responses\Doctors\DeleteResponse;
 use Modules\Backend\Http\Responses\Doctors\IndexResponse;
 use Modules\Backend\Http\Responses\Doctors\ShowResponse;
@@ -48,7 +46,7 @@ class DoctorController extends Controller
      * @param CreateDoctorRequest $request
      * @return StoreResponse
      */
-    public function store(Request $request)
+    public function store(CreateDoctorRequest $request)
     {
         return new StoreResponse($this->model->create($request->all()));
     }
@@ -67,10 +65,10 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      * @param $id
-     * @param UpdateClassRequest $request
+     * @param CreateDoctorRequest $request
      * @return UpdateResponse
      */
-    public function update($id, UpdateClassRequest $request)
+    public function update($id, CreateDoctorRequest $request)
     {
         return new UpdateResponse($this->model->update($id, $request->all()));
     }
