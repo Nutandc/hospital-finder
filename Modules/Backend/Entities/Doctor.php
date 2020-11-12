@@ -6,11 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Doctor extends Model
 {
-    protected $fillable = ['name','special_for','designation',];
+    protected $fillable = ['name','special_for','designation','detail','image'];
 
 }
-$table->string('name');
-$table->string('special_for');
-$table->string('designation');
-$table->string('detail');
-$table->string('image');
+
