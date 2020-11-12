@@ -31,6 +31,11 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Speciality</th>
+                            <th>Designation</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
                             <th class="no-sort action-col">Action</th>
                         </tr>
                         </thead>
@@ -38,6 +43,11 @@
                         @foreach($doctors as $doctor)
                             <tr>
                                 <td>{{ $doctor->name }}</td>
+                                <td>{{ $doctor->speciality }}</td>
+                                <td>{{ $doctor->designation }}</td>
+                                <td>{{ $doctor->email }}</td>
+                                <td>{{ $doctor->phone }}</td>
+                                <td>{{ $doctor->address }}</td>
                                 <td>
                                     @can('class-edit')
                                         <button class="btn btn-primary btn-flat edit-button btn-sm" data-toggle="modal"

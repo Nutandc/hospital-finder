@@ -3,9 +3,11 @@
 
 namespace Modules\Backend\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Modules\Backend\Entities\Classr;
 use Modules\Backend\Entities\Doctor;
 use Modules\Backend\Http\Requests\CreateClassRequest;
+use Modules\Backend\Http\Requests\CreateDoctorRequest;
 use Modules\Backend\Http\Requests\UpdateClassRequest;
 use Modules\Backend\Http\Responses\Doctors\DeleteResponse;
 use Modules\Backend\Http\Responses\Doctors\IndexResponse;
@@ -43,10 +45,10 @@ class DoctorController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @param CreateClassRequest $request
+     * @param CreateDoctorRequest $request
      * @return StoreResponse
      */
-    public function store(CreateClassRequest $request)
+    public function store(Request $request)
     {
         return new StoreResponse($this->model->create($request->all()));
     }
