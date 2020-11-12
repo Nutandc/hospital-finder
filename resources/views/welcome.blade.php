@@ -32,13 +32,13 @@
         <div class="row justify-content-center mb-5 pb-3">
             <div class="col-md-12 text-center heading-section ftco-animate">
                 <h2 class="mb-4">Select Symptoms</h2>
-                <select class="form-control m-1">
+                <select class="form-control m-1 select-2">
                     <option>11</option>
                 </select>
-                <select class="form-control m-1">
+                <select class="form-control m-1 select-2">
 
                 </select>
-                <select class="form-control m-1">
+                <select class="form-control m-1 select-wrap">
 
                 </select>
 
