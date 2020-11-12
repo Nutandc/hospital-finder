@@ -118,28 +118,8 @@
         </div>
     </div>
 </section>
-@if(!request()->get('q'))
-    <section class="ftco-section ftco-counter img" id="section-counter">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="">
-                    <div class="row">
-                        <div class="counter-wrap ftco-animate">
-                            <div class="">
-                                <div class="text">
-                                    <strong class="number" data-number="50"></strong>
-                                    <span>+ hospitals are registered with us </span>
-                                    <a href="#" class=" btn-primary px-4 py-3">
-                                        List all hospitals
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+@if(!request()->has('q'))
+
     <section class="ftco-section services-section bg-light">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
@@ -206,6 +186,100 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+    <section class="ftco-section ftco-counter img" id="section-counter">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="">
+                    <div class="row">
+                        <div class="counter-wrap ftco-animate">
+                            <div class="">
+                                <div class="text">
+                                    <strong class="number" data-number="50"></strong>
+                                    <span>+ hospitals are registered with us </span>
+                                    <a href="#" class=" btn-primary px-4 py-3">
+                                        List all hospitals
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="services-section ftco-no-pt ftc-no-pb">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 py-5">
+                    <div class="heading-section ftco-animate mt-5">
+                        <h2 class="mb-4">Hospitals Near By</h2>
+                        {{--                        <p> Is to establish a seamless coordination and communication between Students - Teachers - Parents ---}}
+                        {{--                            Management.</p>--}}
+                        {{--                        <p>As we provide Relations, Stories and Magic in from of our School Solutions ERP.</p>--}}
+                    </div>
+                    {{--                    <h2 class="mb-4">Hospitals Near By</h2>--}}
+                    {{--                    <p> Baneswor</p>--}}
+                </div>
+                <div class="col-lg-12 py-5">
+                    <div class="row">
+                        @forelse($hospitals as $hospital)
+                            <div class="col-md-3 ftco-animate">
+                                <div class="media block-6 services border text-center">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <img src="{{$hospital->image ?? asset('images/hospital.png')}}"
+                                             class="img img-responsive">
+                                    </div>
+                                    <div class="mt-3 media-body media-body-2">
+                                        <h3 class="heading">{{$hospital->name}}</h3>
+                                        <time> {{$hospital->opening_hour}}</time>
+                                        {{--                                    <p>{{$hospital-/}}</p>--}}
+                                    </div>
+                                </div>
+
+                            </div>
+                        @empty
+                            <div class="mt-3 media-body media-body-2">
+
+                            </div>
+                        @endforelse
+                        {{--                    <div class="col-md-3 ftco-animate">--}}
+                        {{--                        <div class="media block-6 services border text-center">--}}
+                        {{--                            <div class="icon d-flex align-items-center justify-content-center">--}}
+                        {{--                                <span class="flaticon-cloud"></span>--}}
+                        {{--                            </div>--}}
+                        {{--                            <div class="mt-3 media-body media-body-2">--}}
+                        {{--                                <h3 class="heading">Connect</h3>--}}
+                        {{--                                <p>Single app for Parents, Teachers, Students and Management</p>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
+                        {{--                    </div>--}}
+                        {{--                    <div class="col-md-3 ftco-animate">--}}
+                        {{--                        <div class="media block-6 services border text-center">--}}
+                        {{--                            <div class="icon d-flex align-items-center justify-content-center">--}}
+                        {{--                                <span class="flaticon-database"></span>--}}
+                        {{--                            </div>--}}
+                        {{--                            <div class="mt-3 media-body media-body-2">--}}
+                        {{--                                <h3 class="heading">Dedicated</h3>--}}
+                        {{--                                <p>Customized and themed based on your choice and needs</p>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
+                        {{--                    </div>--}}
+                        {{--                    <div class="col-md-3 ftco-animate">--}}
+                        {{--                        <div class="media block-6 services border text-center">--}}
+                        {{--                            <div class="icon d-flex align-items-center justify-content-center">--}}
+                        {{--                                <span class="flaticon-server"></span>--}}
+                        {{--                            </div>--}}
+                        {{--                            <div class="mt-3 media-body media-body-2">--}}
+                        {{--                                <h3 class="heading">Usability</h3>--}}
+                        {{--                                <p>Ease while navigating through application with tonnes of features</p>--}}
+                        {{--                            </div>--}}
+                        {{--                        </div>--}}
+                        {{--                    </div>--}}
+                    </div>
+                </div>
             </div>
         </div>
     </section>
