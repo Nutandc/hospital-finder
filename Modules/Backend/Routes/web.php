@@ -16,7 +16,7 @@
 //});
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'DashboardController@index');
+//Route::get('/', 'DashboardController@index');
 Route::resource('dashboard', 'DashboardController');
 Route::resource('users', 'UserController')->except(['edit', 'create']);
 Route::resource('roles', 'RoleController');
