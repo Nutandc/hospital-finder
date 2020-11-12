@@ -11,18 +11,15 @@ namespace Modules\Backend\Repositories;
 
 use App\Repositories\Repository;
 use Modules\Backend\Entities\Classr;
+use Modules\Backend\Entities\Doctor;
 
-class ClassRepository extends Repository
+class DoctorRepository extends Repository
 {
     protected $model;
 
-    public function __construct(Classr $model)
+    public function __construct(Doctor $model)
     {
         $this->model = $model;
     }
 
-    public function selectDepartments()
-    {
-        return $this->getSelectAll();
-    }
 }

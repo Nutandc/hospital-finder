@@ -6,7 +6,7 @@
  * Time: 4:11 PM
  */
 
-namespace Modules\Backend\Http\Responses\Classes;
+namespace Modules\Backend\Http\Responses\Doctors;
 
 
 use Illuminate\Contracts\Support\Responsable;

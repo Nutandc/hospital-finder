@@ -1,19 +1,19 @@
 @extends('backend::layouts.master')
 @section('header')
-    Classes
+    Doctors
 @stop
 @section('subHeader')
-    List of Classes
+    List of Doctors
 @stop
 @section('breadcrumb')
 @stop
 @section('content')
     @include('backend.partials.error')
     @can('class-create')
-        @include('backend::class.create')
+        @include('backend::doctors.create')
     @endcan
     @can('class-edit')
-        @include('backend::class.edit')
+        @include('backend::doctors.edit')
     @endcan
     <div class="row">
         <div class="col-xs-12">
@@ -21,7 +21,7 @@
                 @can('class-create')
                     <button class="btn btn-primary pull-right btn-flat bootstrap-modal-form-open"
                             data-toggle="modal" data-target="#modal-create-class">
-                        Add Class
+                        Add Doctor
                     </button>
                 @endcan
             </div>
@@ -35,20 +35,20 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($classes as $class)
+                        @foreach($doctors as $doctor)
                             <tr>
-                                <td>{{ $class->name }}</td>
+                                <td>{{ $doctor->name }}</td>
                                 <td>
                                     @can('class-edit')
                                         <button class="btn btn-primary btn-flat edit-button btn-sm" data-toggle="modal"
-                                                data-target="#modal-edit" value="{{ $class['id'] }}"><i
+                                                data-target="#modal-edit" value="{{ $doctor['id'] }}"><i
                                                 class="fa fa-edit "></i></button>
                                     @endcan
                                     @can('class-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['class.destroy', $class->id],
+                                        {!! Form::open(['method' => 'DELETE','route' => ['doctors.destroy', $doctor->id],
                                            'onsubmit' => "return confirm('Are you sure you want to delete?')",'style'=>"display:inline"]) !!}
                                         <button class="btn btn-danger btn-flat  btn-sm"
-                                                href="{{ route('class.destroy',$class->id) }}">
+                                                href="{{ route('doctors.destroy',$doctor->id) }}">
                                             <i
                                                 class="fa fa-trash"></i></button>
                                         {!! Form::close() !!}
@@ -70,13 +70,13 @@
         $(document).ready(function () {
             $('#dataTable').on('click', '.edit-button', function () {
                 var id = $(this).val();
-                var url = "/class/" + id;
+                var url = "/doctors/" + id;
                 $.ajax({
                     url: url,
                     method: "get"
                 }).done(function (response) {
                     $("#modal-edit input[name='name']").val(response.name);
-                    $('#modal-edit form').attr('action', '{{ url('/class') }}' + '/' + id);
+                    $('#modal-edit form').attr('action', '{{ url('/doctors') }}' + '/' + id);
                 });
             })
         });

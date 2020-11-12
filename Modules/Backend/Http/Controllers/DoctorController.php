@@ -1,85 +1,85 @@
 <?php
 
-namespace App\Http\Controllers;
 
-use App\Doctor;
-use Illuminate\Http\Request;
+namespace Modules\Backend\Http\Controllers;
+
+use Modules\Backend\Entities\Classr;
+use Modules\Backend\Entities\Doctor;
+use Modules\Backend\Http\Requests\CreateClassRequest;
+use Modules\Backend\Http\Requests\UpdateClassRequest;
+use Modules\Backend\Http\Responses\Doctors\DeleteResponse;
+use Modules\Backend\Http\Responses\Doctors\IndexResponse;
+use Modules\Backend\Http\Responses\Doctors\ShowResponse;
+use Modules\Backend\Http\Responses\Doctors\StoreResponse;
+use Modules\Backend\Http\Responses\Doctors\UpdateResponse;
+use Modules\Backend\Repositories\ClassRepository;
+use Modules\Backend\Repositories\DoctorRepository;
+use Nwidart\Modules\Routing\Controller;
 
 class DoctorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    protected $model;
+    protected $routePrefix = 'backend';
+
+    public function __construct(Doctor $doctor)
     {
-        //
+        $this->middleware('auth');
+        $this->middleware(['permission:doctor-view|doctor-create|doctor-edit|doctor-delete'], ['only' => ['index', 'show']]);
+        $this->middleware(['permission:doctor-create'], ['only' => ['create', 'store', 'show']]);
+        $this->middleware(['permission:doctor-edit'], ['only' => ['edit', 'update', 'show']]);
+        $this->middleware(['permission:doctor-delete'], ['only' => ['destroy']]);
+        // set the model
+        $this->model = new DoctorRepository($doctor);
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Display a listing of the resource.
+     * @return IndexResponse
      */
-    public function create()
+    public function index()
     {
-        //
+        return new IndexResponse($this->model->getAll());
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateClassRequest $request
+     * @return StoreResponse
      */
-    public function store(Request $request)
+    public function store(CreateClassRequest $request)
     {
-        //
+        return new StoreResponse($this->model->create($request->all()));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Doctor  $doctor
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Doctor $doctor)
-    {
-        //
-    }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Doctor  $doctor
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return ShowResponse
      */
-    public function edit(Doctor $doctor)
+    public function show($id)
     {
-        //
+        return new ShowResponse($this->model->getById($id));
     }
+
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Doctor  $doctor
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @param UpdateClassRequest $request
+     * @return UpdateResponse
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update($id, UpdateClassRequest $request)
     {
-        //
+        return new UpdateResponse($this->model->update($id, $request->all()));
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  \App\Doctor  $doctor
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return DeleteResponse
      */
-    public function destroy(Doctor $doctor)
+    public function destroy($id)
     {
-        //
+        return new DeleteResponse($this->model, $id);
     }
 }

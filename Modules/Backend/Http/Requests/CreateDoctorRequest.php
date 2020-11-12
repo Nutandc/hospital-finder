@@ -15,7 +15,7 @@ class CreateClassRequest extends FormRequestForApi
     public function rules()
     {
         return [
-            'name' => 'required|max:255|unique:classrs,name',
+            'name' => 'required|max:255|unique:doctors,name',
         ];
     }
 

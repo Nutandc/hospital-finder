@@ -4,10 +4,10 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Edit class</h4>
+                <h4 class="modal-title">Edit Doctor</h4>
             </div>
             {!! Form::open(array('method'=>'PATCH','class'=>'form-horizontal bootstrap-modal-form')) !!}
-            @include('backend::class.form')
+            @include('backend::doctors.form')
             {!! Form::close() !!}
 
         </div>
