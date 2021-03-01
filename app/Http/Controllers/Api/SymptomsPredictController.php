@@ -9,7 +9,9 @@ class SymptomsPredictController extends Controller
 {
     public function predict(Request $request)
     {
+        return response(
+            $request->all()
+        );
 
-        dd($request->all());
     }
 }
