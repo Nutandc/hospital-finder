@@ -23,9 +23,9 @@ class IndexResponse implements Responsable
     public function toResponse($request)
     {
         $selectCountries = countryList();
-        $doctors = $this->model;
-        return view('backend::doctors.index')
-            ->with(['doctors' => $doctors,
+        $diseases = $this->model;
+        return view('backend::disease.index')
+            ->with(['disease' => $diseases,
                 'selectCountries' => $selectCountries,
                 $this->model->sortByDesc('created_at')]);
         /*return response()->json($this->accountTypeCategories);*/

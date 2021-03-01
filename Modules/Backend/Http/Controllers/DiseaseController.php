@@ -3,15 +3,16 @@
 
 namespace Modules\Backend\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Modules\Backend\Entities\Classr;
 use Modules\Backend\Entities\Disease;
 use Modules\Backend\Http\Requests\CreateClassRequest;
 use Modules\Backend\Http\Requests\CreateDoctorRequest;
-use Modules\Backend\Http\Responses\Doctors\DeleteResponse;
-use Modules\Backend\Http\Responses\Doctors\IndexResponse;
-use Modules\Backend\Http\Responses\Doctors\ShowResponse;
-use Modules\Backend\Http\Responses\Doctors\StoreResponse;
-use Modules\Backend\Http\Responses\Doctors\UpdateResponse;
+use Modules\Backend\Http\Responses\Disease\DeleteResponse;
+use Modules\Backend\Http\Responses\Disease\IndexResponse;
+use Modules\Backend\Http\Responses\Disease\ShowResponse;
+use Modules\Backend\Http\Responses\Disease\StoreResponse;
+use Modules\Backend\Http\Responses\Disease\UpdateResponse;
 use Modules\Backend\Repositories\ClassRepository;
 use Modules\Backend\Repositories\DiseaseRepository;
 use Nwidart\Modules\Routing\Controller;
@@ -46,7 +47,7 @@ class DiseaseController extends Controller
      * @param CreateDoctorRequest $request
      * @return StoreResponse
      */
-    public function store(CreateDoctorRequest $request)
+    public function store(Request $request)
     {
         return new StoreResponse($this->model->create($request->all()));
     }

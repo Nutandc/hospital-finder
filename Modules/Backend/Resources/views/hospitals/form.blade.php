@@ -54,6 +54,12 @@
             {!! Form::file('image',  array('class' => 'form-control','multiple'=>true, 'id'=>'images')) !!}
         </div>
     </div>
+    <div class="form-group  {{ $errors->has('disease') ? 'has-error':'' }}">
+        {{ Form::label('diseases', 'Disease that treated:', ['class'=>'col-sm-2 control-label'])}}
+        <div class="col-sm-10">
+            {!! Form::select('diseases[]', \Modules\Backend\Entities\Disease::pluck('name','id'), null, ['class' => 'form-control scheduled_email select2', 'multiple','style'=>'    width: 50.75em;']) !!}
+        </div>
+    </div>
 
 </div>
 <div class="modal-footer">

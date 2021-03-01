@@ -5,6 +5,7 @@ namespace Modules\Backend\Http\Controllers;
 
 use Modules\Backend\Entities\Classr;
 use Modules\Backend\Entities\Hospital;
+use Modules\Backend\Entities\HospitalDisease;
 use Modules\Backend\Http\Requests\CreateClassRequest;
 use Modules\Backend\Http\Requests\CreateDoctorRequest;
 use Modules\Backend\Http\Requests\CreateHospitalRequest;
@@ -21,6 +22,10 @@ class HospitalController extends Controller
 {
     protected $model;
     protected $routePrefix = 'backend';
+    /**
+     * @var Hospital
+     */
+    private Hospital $hospital;
 
     public function __construct(Hospital $hospital)
     {
@@ -31,6 +36,7 @@ class HospitalController extends Controller
         $this->middleware(['permission:hospital-delete'], ['only' => ['destroy']]);
         // set the model
         $this->model = new HospitalRepository($hospital);
+        $this->hospital = $hospital;
     }
 
     /**
@@ -56,7 +62,14 @@ class HospitalController extends Controller
             $image->move($destinationPath, $name);
             $request['image'] = $name;
         }
-        return new StoreResponse($this->model->create($request->all()));
+        $hospital = $this->model->create($request->all());
+        foreach ($request->diseases as $disease) {
+            HospitalDisease::create([
+                'hospital_id' => $hospital->id,
+                'disease_id' => $disease
+            ]);
+        }
+        return new StoreResponse($hospital);
     }
 
 
