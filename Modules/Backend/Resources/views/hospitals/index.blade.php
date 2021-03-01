@@ -1,19 +1,19 @@
 @extends('backend::layouts.master')
 @section('header')
-    Symptoms
+    Hospital
 @stop
 @section('subHeader')
-    List of Symptoms
+    List of Hospital
 @stop
 @section('breadcrumb')
 @stop
 @section('content')
     @include('backend.partials.error')
     @can('hospital-create')
-        @include('backend::symptoms.create')
+        @include('backend::hospitals.create')
     @endcan
     @can('hospital-edit')
-        @include('backend::symptoms.edit')
+        @include('backend::hospitals.edit')
     @endcan
     <div class="row">
         <div class="col-xs-12">
@@ -21,7 +21,7 @@
                 @can('hospital-create')
                     <button class="btn btn-primary pull-right btn-flat bootstrap-modal-form-open"
                             data-toggle="modal" data-target="#modal-create-class">
-                        Add Symptom
+                        Add Hospital
                     </button>
                 @endcan
             </div>
@@ -45,10 +45,10 @@
                                                 class="fa fa-edit "></i></button>
                                     @endcan
                                     @can('hospital-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['symptoms.destroy', $hospital->id],
+                                        {!! Form::open(['method' => 'DELETE','route' => ['hospitals.destroy', $hospital->id],
                                            'onsubmit' => "return confirm('Are you sure you want to delete?')",'style'=>"display:inline"]) !!}
                                         <button class="btn btn-danger btn-flat  btn-sm"
-                                                href="{{ route('symptoms.destroy',$hospital->id) }}">
+                                                href="{{ route('hospitals.destroy',$hospital->id) }}">
                                             <i
                                                 class="fa fa-trash"></i></button>
                                         {!! Form::close() !!}
@@ -70,7 +70,7 @@
         $(document).ready(function () {
             $('#dataTable').on('click', '.edit-button', function () {
                 var id = $(this).val();
-                var url = "/symptoms/" + id;
+                var url = "/hospitals/" + id;
                 $.ajax({
                     url: url,
                     method: "get"
@@ -84,7 +84,7 @@
                     $("#modal-edit input[name='phone']").val(response.phone);
                     $("#modal-edit input[name='address']").val(response.address);
                     $("#modal-edit input[name='detail']").val(response.detail);
-                    $('#modal-edit form').attr('action', '{{ url('/symptoms') }}' + '/' + id);
+                    $('#modal-edit form').attr('action', '{{ url('/hospitals') }}' + '/' + id);
                 });
             })
         });

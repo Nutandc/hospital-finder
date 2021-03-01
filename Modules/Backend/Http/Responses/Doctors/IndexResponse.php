@@ -22,12 +22,10 @@ class IndexResponse implements Responsable
 
     public function toResponse($request)
     {
-        $selectCountries = countryList();
         $doctors = $this->model;
         return view('backend::doctors.index')
             ->with(['doctors' => $doctors,
-                'selectCountries' => $selectCountries,
+                'selectCountries' => countryList(),
                 $this->model->sortByDesc('created_at')]);
-        /*return response()->json($this->accountTypeCategories);*/
     }
 }
