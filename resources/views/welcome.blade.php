@@ -102,12 +102,18 @@
                 <div class="col-md-9 text-center heading-section ftco-animate">
                     <h2 class="mb-4">Select Symptoms</h2>
                     <select class="form-control m-1 select-2" name="symptoms">
-                        <option selected>Select symptoms</option>
+                        <option value="" selected>Select symptoms</option>
                         <option value="fever">Fever</option>
                         <option value="diarrhoea">Diarrhoea</option>
                         <option value="headache">Headache</option>
+                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
+                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
+                        @endforeach
                     </select>
+
                 </div>
+                {!! $errors->first('symptoms', '<span class="help-block">:message</span>') !!}
+
                 <div class="col-md-6 mt-2 pt-2">
                     <button type="submit" class="btn btn-primary btn-block btn-flat px-4 py-3">
                         Predict

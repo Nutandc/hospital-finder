@@ -9,6 +9,9 @@ class SymptomsPredictController extends Controller
 {
     public function predict(Request $request)
     {
+        $request->validate( [
+            'symptoms' => 'required'
+        ]);
         return response(
             $request->all()
         );
