@@ -21,7 +21,7 @@ class SymptomController extends Controller
     public function index()
     {
 
-        return view('backend::hospitals.index')
+        return view('backend::symptoms.index')
             ->with('symptoms', Symptom::all());
     }
 
