@@ -18,10 +18,12 @@ class UsersTableSeeder extends Seeder
         Model::unguard();
         $superUser = User::updateOrCreate(
             ['email' => 'admin@admin.com'],
-            ['name' => 'Admin',
+            [
+                'name' => 'Admin',
                 'password' => bcrypt('Admin321'),
                 'super' => true,
-                'status' => true
+                'status' => true,
+                'email' => 'admin@admin.com'
             ]);
         if (!$superUser->hasRole('Administrator'))
             $superUser->assignRole('Administrator', 'backend');
