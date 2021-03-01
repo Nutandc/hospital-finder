@@ -96,13 +96,45 @@
 @endif
 <section class="services-section bg-light">
     <div class="container">
-        <form action="{{route('symptoms-predicts')}}" method="post">
+        <form action="#" method="post">
             @csrf
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-9 text-center heading-section ftco-animate">
                     <h2 class="mb-4">Select Symptoms</h2>
-                    <select class="form-control m-1 select-2" name="symptoms">
-                        <option value="" selected>Select symptoms</option>
+                    <select class="form-control m-1 select-2" name="s1">
+                        <option value="" selected>Select first symptom</option>
+                        <option value="fever">Fever</option>
+                        <option value="diarrhoea">Diarrhoea</option>
+                        <option value="headache">Headache</option>
+                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
+                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
+                        @endforeach
+                    </select> <select class="form-control m-1 select-2" name="s2">
+                        <option value="" selected>Select second symptom</option>
+                        <option value="fever">Fever</option>
+                        <option value="diarrhoea">Diarrhoea</option>
+                        <option value="headache">Headache</option>
+                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
+                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
+                        @endforeach
+                    </select> <select class="form-control m-1 select-2" name="s3">
+                        <option value="" selected>Select third symptom</option>
+                        <option value="fever">Fever</option>
+                        <option value="diarrhoea">Diarrhoea</option>
+                        <option value="headache">Headache</option>
+                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
+                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
+                        @endforeach
+                    </select> <select class="form-control m-1 select-2" name="s4">
+                        <option value="" selected>Select fourth symptom</option>
+                        <option value="fever">Fever</option>
+                        <option value="diarrhoea">Diarrhoea</option>
+                        <option value="headache">Headache</option>
+                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
+                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
+                        @endforeach
+                    </select> <select class="form-control m-1 select-2" name="s5">
+                        <option value="" selected>Select fifth symptom</option>
                         <option value="fever">Fever</option>
                         <option value="diarrhoea">Diarrhoea</option>
                         <option value="headache">Headache</option>
@@ -110,14 +142,27 @@
                             <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
                         @endforeach
                     </select>
-
                 </div>
                 {!! $errors->first('symptoms', '<span class="help-block">:message</span>') !!}
 
-                <div class="col-md-6 mt-2 pt-2">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat px-4 py-3">
-                        Predict
-                    </button>
+                <div class="col-md-4 mt-2 pt-2">
+                    <div class="row">
+                        <button type="submit" class="btn btn-primary btn-block btn-flat px-4 py-3"
+                                formaction="{{route('symptoms-predicts.design-tree')}}">
+                            Predict with Decision Tree
+                        </button>
+                        <button type="submit" class="btn btn-info btn-block btn-flat px-4 py-3"
+                                formaction="{{route('symptoms-predicts.random-forest')}}">
+
+                        Predict with RandomForest
+                        </button>
+                        <button type="submit" class="btn btn-secondary btn-block btn-flat px-4 py-3"
+                                formaction="{{route('symptoms-predicts.naive-bayes')}}">
+
+                        Predict with Naive Bayes
+                        </button>
+                    </div>
+
                 </div>
             </div>
         </form>
