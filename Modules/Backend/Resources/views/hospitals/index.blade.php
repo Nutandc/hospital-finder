@@ -35,7 +35,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($symptoms as $hospital)
+                        @foreach($hospitals as $hospital)
                             <tr>
                                 <td>{{ $hospital->name }}</td>
                                 <td>
