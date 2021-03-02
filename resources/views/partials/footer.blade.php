@@ -107,11 +107,16 @@
                     },
                     url: '{{config('app.python_url')}}' + '/' + URL,
                     success: function (response) {
-                        console.log(response, URL)
+                        let template = `
+                        <div class="card-footer border-0" style="background-color: #fafafa;">
+                        <button class="btn btn-primary btn-block btn-flat px-4 py-3"
+                         id="look_for_hospital">Look For a Hospital ? </button>
+                        </div>
+                        `
                         $('.p.card-title').html(`<h1>${URL}</h1>`);
-                        $('.p.card-body').html(`<h3>${response.disease}<h1>`);
+                        $('.p.card-body').html(`<h3>${response.disease}<h1>`).after($(template));
+
                     }, error: function (error) {
-                        // console.log(error)
                     }
                 })
             })
@@ -127,7 +132,6 @@
                         });
                     }
                 }, error: function (error) {
-                    console.log(error)
                 }
             })
         })
