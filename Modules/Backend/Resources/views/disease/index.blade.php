@@ -18,44 +18,45 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box-header">
-                @can('hospital-create')
-                    <button class="btn btn-primary pull-right btn-flat bootstrap-modal-form-open"
-                            data-toggle="modal" data-target="#modal-create-class">
-                        Add Disease
-                    </button>
-                @endcan
+{{--                @can('hospital-create')--}}
+{{--                    <button class="btn btn-primary pull-right btn-flat bootstrap-modal-form-open"--}}
+{{--                            data-toggle="modal" data-target="#modal-create-class">--}}
+{{--                        Add Disease--}}
+{{--                    </button>--}}
+{{--                @endcan--}}
             </div>
             <div class="box">
                 <div class="box-body">
-                    <table id="dataTable" class="table table-bordered table-condensed dataTable">
+                    <table id="dataTable" class="table table-bordered table-condensed ">
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Detail</th>
-                            <th class="no-sort action-col">Action</th>
+{{--                            <th>Detail</th>--}}
+{{--                            <th class="no-sort action-col">Action</th>--}}
                         </tr>
                         </thead>
                         <tbody>
+{{--                        @dd($disease)--}}
                             @foreach($disease as $hospital)
                             <tr>
-                                <td>{{ $hospital->name }}</td>
-                                <td>{{ $hospital->detail }}</td>
-                                <td>
-                                    @can('hospital-edit')
-                                        <button class="btn btn-primary btn-flat edit-button btn-sm" data-toggle="modal"
-                                                data-target="#modal-edit" value="{{ $hospital['id'] }}"><i
-                                                class="fa fa-edit "></i></button>
-                                    @endcan
-                                    @can('hospital-delete')
-                                        {!! Form::open(['method' => 'DELETE','route' => ['disease.destroy', $hospital->id],
-                                           'onsubmit' => "return confirm('Are you sure you want to delete?')",'style'=>"display:inline"]) !!}
-                                        <button class="btn btn-danger btn-flat  btn-sm"
-                                                href="{{ route('disease.destroy',$hospital->id) }}">
-                                            <i
-                                                class="fa fa-trash"></i></button>
-                                        {!! Form::close() !!}
-                                    @endcan
-                                </td>
+                                <td>{{ $hospital }}</td>
+{{--                                <td>{{ $hospital->detail }}</td>--}}
+{{--                                <td>--}}
+{{--                                    @can('hospital-edit')--}}
+{{--                                        <button class="btn btn-primary btn-flat edit-button btn-sm" data-toggle="modal"--}}
+{{--                                                data-target="#modal-edit" value="{{ $hospital['id'] }}"><i--}}
+{{--                                                class="fa fa-edit "></i></button>--}}
+{{--                                    @endcan--}}
+{{--                                    @can('hospital-delete')--}}
+{{--                                        {!! Form::open(['method' => 'DELETE','route' => ['disease.destroy', $hospital->id],--}}
+{{--                                           'onsubmit' => "return confirm('Are you sure you want to delete?')",'style'=>"display:inline"]) !!}--}}
+{{--                                        <button class="btn btn-danger btn-flat  btn-sm"--}}
+{{--                                                href="{{ route('disease.destroy',$hospital->id) }}">--}}
+{{--                                            <i--}}
+{{--                                                class="fa fa-trash"></i></button>--}}
+{{--                                        {!! Form::close() !!}--}}
+{{--                                    @endcan--}}
+{{--                                </td>--}}
                             </tr>
                         @endforeach
                         </tbody>

@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
         $superUser = User::updateOrCreate(
             ['email' => 'admin@admin.com'],
             ['name' => 'Admin',
-                'password' => bcrypt('Admin321'),
+                'password' => bcrypt('123456'),
                 'super' => true,
                 'status' => true
             ]);

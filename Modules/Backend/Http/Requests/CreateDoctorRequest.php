@@ -14,7 +14,7 @@ class CreateDoctorRequest extends FormRequestForApi
     public function rules()
     {
         return [
-            'name' => 'required|max:255|unique:doctors,name',
+            'name' => 'required|max:255|unique:doctors,name,'.$this->id,
             'special_for' => 'required|max:255',
             'designation' => 'required|max:255',
             'email' => 'required|max:255',

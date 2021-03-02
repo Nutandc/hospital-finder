@@ -22,9 +22,18 @@ class IndexResponse implements Responsable
 
     public function toResponse($request)
     {
+        $disease = ['Fungal infection', 'Allergy', 'GERD', 'Chronic cholesterol', 'Drug Reaction',
+            'Peptic ulcer disease', 'AIDS', 'Diabetes', 'Gastroenteritis', 'Bronchial Asthma', 'Hypertension',
+            ' Migraine', 'Cervical spondylosis',
+            'Paralysis (brain hemorrhage)', 'Jaundice', 'Malaria', 'Chicken pox', 'Dengue', 'Typhoid', 'hepatitis A',
+            'Hepatitis B', 'Hepatitis C', 'Hepatitis D', 'Hepatitis E', 'Alcoholic hepatitis', 'Tuberculosis',
+            'Common Cold', 'Pneumonia', 'Dimorphic hemorrhoids(piles)',
+            'Heart Attack', 'Varicoseveins', 'Hypothyroidism', 'Hyperthyroidism', 'Hypoglycemia', 'Osteoarthristis',
+            'Arthritis', '(vertigo) Paroymsal  Positional Vertigo', 'Acne', 'Urinary tract infection', 'Psoriasis',
+            'Impetigo'];
         return view('backend::hospitals.index')
-            ->with('hospitals',
-                $this->model->sortByDesc('created_at'));
+            ->with('hospitals', $this->model->sortByDesc('created_at'))
+            ->with('diseases', array_combine($disease,$disease));
         /*return response()->json($this->accountTypeCategories);*/
     }
 }

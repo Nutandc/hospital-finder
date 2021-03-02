@@ -39,7 +39,16 @@ class DiseaseController extends Controller
      */
     public function index()
     {
-        return new IndexResponse($this->model->getAll());
+        $disease = ['Fungal infection', 'Allergy', 'GERD', 'Chronic cholesterol', 'Drug Reaction',
+            'Peptic ulcer disease', 'AIDS', 'Diabetes', 'Gastroenteritis', 'Bronchial Asthma', 'Hypertension',
+            ' Migraine', 'Cervical spondylosis',
+            'Paralysis (brain hemorrhage)', 'Jaundice', 'Malaria', 'Chicken pox', 'Dengue', 'Typhoid', 'hepatitis A',
+            'Hepatitis B', 'Hepatitis C', 'Hepatitis D', 'Hepatitis E', 'Alcoholic hepatitis', 'Tuberculosis',
+            'Common Cold', 'Pneumonia', 'Dimorphic hemorrhoids(piles)',
+            'Heart Attack', 'Varicoseveins', 'Hypothyroidism', 'Hyperthyroidism', 'Hypoglycemia', 'Osteoarthristis',
+            'Arthritis', '(vertigo) Paroymsal  Positional Vertigo', 'Acne', 'Urinary tract infection', 'Psoriasis',
+            'Impetigo'];
+        return new IndexResponse($disease);
     }
 
     /**

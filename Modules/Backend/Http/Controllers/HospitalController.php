@@ -25,7 +25,7 @@ class HospitalController extends Controller
     /**
      * @var Hospital
      */
-    private Hospital $hospital;
+    private $hospital;
 
     public function __construct(Hospital $hospital)
     {
@@ -63,10 +63,10 @@ class HospitalController extends Controller
             $request['image'] = $name;
         }
         $hospital = $this->model->create($request->all());
-        foreach ($request->diseases as $disease) {
+        foreach ($request->diseases ?? [] as $disease) {
             HospitalDisease::create([
                 'hospital_id' => $hospital->id,
-                'disease_id' => $disease
+                'disease' => $disease
             ]);
         }
         return new StoreResponse($hospital);

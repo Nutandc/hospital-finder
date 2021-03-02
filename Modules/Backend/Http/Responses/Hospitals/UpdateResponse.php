@@ -23,11 +23,11 @@ class UpdateResponse implements Responsable
     public function toResponse($request)
     {
         if ($this->class) {
-            $request->session()->flash('success', 'Class updated successfully.');
-            return redirect()->route('class.index');
+            $request->session()->flash('success', 'Doctors updated successfully.');
+            return redirect()->route('doctors.index');
         } else {
-            $request->session()->flash('failed', 'class cannot be updated.');
-            return redirect()->route('class.index');
+            $request->session()->flash('failed', 'Doctors cannot be updated.');
+            return redirect()->route('doctors.index');
         }
     }
 }

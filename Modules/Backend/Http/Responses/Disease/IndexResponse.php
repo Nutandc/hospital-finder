@@ -27,7 +27,7 @@ class IndexResponse implements Responsable
         return view('backend::disease.index')
             ->with(['disease' => $diseases,
                 'selectCountries' => $selectCountries,
-                $this->model->sortByDesc('created_at')]);
+                ]);
         /*return response()->json($this->accountTypeCategories);*/
     }
 }

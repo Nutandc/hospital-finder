@@ -23,9 +23,14 @@ class StoreResponse implements Responsable
     public function toResponse($request)
     {
         if ($this->model) {
-            return redirect()->route('disease.index')->with('success', 'Disease added successfully');
+            return redirect()
+                ->route('doctors.index')
+                ->with('success', 'Doctors added successfully');
         } else {
-            return redirect()->back()->withInput()->with('failed', 'Disease cannot be added');
+            return redirect()
+                ->back()
+                ->withInput()
+                ->with('failed', 'Disease cannot be added');
         }
     }
 }

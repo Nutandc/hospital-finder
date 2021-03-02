@@ -17,8 +17,9 @@ class CreateHospitalDiseaseTable extends Migration
         Schema::create('hospital_diseases', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('hospital_id');
-            $table->unsignedInteger('disease_id');
-            $table->foreign('disease_id')->references('id')->on('diseases');
+            $table->string('disease');
+//            $table->unsignedInteger('disease_id');
+//            $table->foreign('disease_id')->references('id')->on('diseases');
             $table->foreign('hospital_id')->references('id')->on('hospitals');
 
             $table->timestamps();

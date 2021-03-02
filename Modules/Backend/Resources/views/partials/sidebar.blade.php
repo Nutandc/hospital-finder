@@ -24,12 +24,12 @@
                     <span>Hospital</span></a>
             </li>
         @endcan
-        @can('symptom-view')
-            <li class="{{ Request::is('symptoms','/symptoms/*') ? 'active' : '' }}">
-                <a href="{{route('symptoms.index')}}"><i class="fa fa-wheelchair"></i>
-                    <span>Symptom</span></a>
-            </li>
-        @endcan
+{{--        @can('symptom-view')--}}
+{{--            <li class="{{ Request::is('symptoms','/symptoms/*') ? 'active' : '' }}">--}}
+{{--                <a href="{{route('symptoms.index')}}"><i class="fa fa-wheelchair"></i>--}}
+{{--                    <span>Symptom</span></a>--}}
+{{--            </li>--}}
+{{--        @endcan--}}
         {{--        @include('backend::partials.sidenav')--}}
         <li class="header">SETTINGS</li>
         {{--@if(Auth::user()->hasAnyPermission(['user-view','role-view']))--}}
