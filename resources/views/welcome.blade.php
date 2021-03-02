@@ -86,7 +86,7 @@
                             {{--                                <p>Ease while navigating through application with tonnes of features</p>--}}
                             {{--                            </div>--}}
                             {{--                        </div>--}}
-                            {{--                    </div>--}}
+                                {{--                    </div>--}}
                         </div>
                     </div>
                 </div>
@@ -96,81 +96,63 @@
 @endif
 <section class="services-section bg-light">
     <div class="container">
-        <form action="#" method="post">
-            @csrf
+        <form action="#" method="post" id="predictionForm">
+            {{--            @csrf--}}
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-9 text-center heading-section ftco-animate">
                     <h2 class="mb-4">Select Symptoms</h2>
                     <select class="form-control m-1 select-2" name="s1">
                         <option value="" selected>Select first symptom</option>
-                        <option value="fever">Fever</option>
-                        <option value="diarrhoea">Diarrhoea</option>
-                        <option value="headache">Headache</option>
-                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
-                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
-                        @endforeach
-                    </select> <select class="form-control m-1 select-2" name="s2">
+                    </select>
+                    <select class="form-control m-1 select-2" name="s2">
                         <option value="" selected>Select second symptom</option>
-                        <option value="fever">Fever</option>
-                        <option value="diarrhoea">Diarrhoea</option>
-                        <option value="headache">Headache</option>
-                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
-                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
-                        @endforeach
-                    </select> <select class="form-control m-1 select-2" name="s3">
+                    </select>
+                    <select class="form-control m-1 select-2" name="s3">
                         <option value="" selected>Select third symptom</option>
-                        <option value="fever">Fever</option>
-                        <option value="diarrhoea">Diarrhoea</option>
-                        <option value="headache">Headache</option>
-                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
-                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
-                        @endforeach
-                    </select> <select class="form-control m-1 select-2" name="s4">
+                    </select>
+                    <select class="form-control m-1 select-2" name="s4">
                         <option value="" selected>Select fourth symptom</option>
-                        <option value="fever">Fever</option>
-                        <option value="diarrhoea">Diarrhoea</option>
-                        <option value="headache">Headache</option>
-                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
-                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
-                        @endforeach
-                    </select> <select class="form-control m-1 select-2" name="s5">
+                    </select>
+                    <select class="form-control m-1 select-2" name="s5">
                         <option value="" selected>Select fifth symptom</option>
-                        <option value="fever">Fever</option>
-                        <option value="diarrhoea">Diarrhoea</option>
-                        <option value="headache">Headache</option>
-                        @foreach(\Modules\Backend\Entities\Symptom::all() as $symptopm)
-                            <option value="{{$symptopm->name}}">{{$symptopm->name}}</option>
-                        @endforeach
                     </select>
                 </div>
                 {!! $errors->first('symptoms', '<span class="help-block">:message</span>') !!}
 
                 <div class="col-md-4 mt-2 pt-2">
                     <div class="row">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat px-4 py-3"
-                                formaction="{{route('symptoms-predicts.design-tree')}}">
+                        <button type="submit"
+                                {{--                                value="{{config('app.python_url').'/PredictByDecisionTree'}}"--}}
+                                class="btn btn-primary btn-block btn-flat px-4 py-3"
+                                value="PredictByDecisionTree">
                             Predict with Decision Tree
                         </button>
-                        <button type="submit" class="btn btn-info btn-block btn-flat px-4 py-3"
-                                formaction="{{route('symptoms-predicts.random-forest')}}">
+                        <button type="submit"
+                                class="btn btn-info btn-block btn-flat px-4 py-3"
+                                value="PredictByRandomForest">
 
-                        Predict with RandomForest
+                            Predict with RandomForest
                         </button>
-                        <button type="submit" class="btn btn-secondary btn-block btn-flat px-4 py-3"
-                                formaction="{{route('symptoms-predicts.naive-bayes')}}">
+                        <button type="submit"
+                                class="btn btn-secondary btn-block btn-flat px-4 py-3"
+                                value="PredictByNaiveBayes">
 
-                        Predict with Naive Bayes
+                            Predict with Naive Bayes
                         </button>
                     </div>
 
                 </div>
             </div>
         </form>
-
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-md-7 text-center">
+                <div class="card-title p"></div>
+                <div class="card-body p"></div>
+            </div>
+        </div>
     </div>
 </section>
 @if(!request()->has('q'))
-
     <section class="ftco-section services-section bg-light">
         <div class="container">
             <div class="row justify-content-center mb-5 pb-3">
@@ -180,8 +162,6 @@
                         We try to predict the disease according to your inputs and
                         recommend you the nearest hospitals.
                         You can also search the hospital by their name, doctors,disease.
-
-
                     </p>
                 </div>
             </div>
@@ -296,44 +276,11 @@
 
                             </div>
                         @endforelse
-                        {{--                    <div class="col-md-3 ftco-animate">--}}
-                        {{--                        <div class="media block-6 services border text-center">--}}
-                        {{--                            <div class="icon d-flex align-items-center justify-content-center">--}}
-                        {{--                                <span class="flaticon-cloud"></span>--}}
-                        {{--                            </div>--}}
-                        {{--                            <div class="mt-3 media-body media-body-2">--}}
-                        {{--                                <h3 class="heading">Connect</h3>--}}
-                        {{--                                <p>Single app for Parents, Teachers, Students and Management</p>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
-                        {{--                    <div class="col-md-3 ftco-animate">--}}
-                        {{--                        <div class="media block-6 services border text-center">--}}
-                        {{--                            <div class="icon d-flex align-items-center justify-content-center">--}}
-                        {{--                                <span class="flaticon-database"></span>--}}
-                        {{--                            </div>--}}
-                        {{--                            <div class="mt-3 media-body media-body-2">--}}
-                        {{--                                <h3 class="heading">Dedicated</h3>--}}
-                        {{--                                <p>Customized and themed based on your choice and needs</p>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
-                        {{--                    <div class="col-md-3 ftco-animate">--}}
-                        {{--                        <div class="media block-6 services border text-center">--}}
-                        {{--                            <div class="icon d-flex align-items-center justify-content-center">--}}
-                        {{--                                <span class="flaticon-server"></span>--}}
-                        {{--                            </div>--}}
-                        {{--                            <div class="mt-3 media-body media-body-2">--}}
-                        {{--                                <h3 class="heading">Usability</h3>--}}
-                        {{--                                <p>Ease while navigating through application with tonnes of features</p>--}}
-                        {{--                            </div>--}}
-                        {{--                        </div>--}}
-                        {{--                    </div>--}}
                     </div>
                 </div>
             </div>
         </div>
     </section>
 @endif
-
 @include('partials.footer')
+

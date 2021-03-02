@@ -76,14 +76,6 @@
             </div>
         </div>
     </footer>
-<div id="ftco-loader" class="show fullscreen">
-    <svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                stroke="#F96D00"/>
-    </svg>
-</div>
-
     <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ URL::asset('js/popper.min.js') }}"></script>
@@ -96,9 +88,47 @@
     <script src="{{ URL::asset('js/aos.js') }}"></script>
     <script src="{{ URL::asset('js/jquery.animateNumber.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ URL::asset('js/jquery.timepicker.min.js') }}"></script>
+    {{--    <script src="{{ URL::asset('js/jquery.timepicker.min.js') }}"></script>--}}
     <script src="{{ URL::asset('js/scrollax.min.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="{{ URL::asset('js/google-map.js') }}"></script>
     <script src="{{ URL::asset('js/main.js') }}"></script>
-
+    <script>
+        $(document).ready(function () {
+            $('#predictionForm').on('submit', function (e) {
+                e.preventDefault();
+                let URL = $(document.activeElement).val();
+                $.ajax({
+                    method: 'POST',
+                    data: {
+                        's1': $('select[name="s1"]').val(),
+                        's2': $('select[name="s2"]').val(),
+                        's3': $('select[name="s3"]').val(),
+                        's4': $('select[name="s4"]').val(),
+                        's5': $('select[name="s5"]').val(),
+                    },
+                    url: '{{config('app.python_url')}}' + '/' + URL,
+                    success: function (response) {
+                        console.log(response, URL)
+                        $('.p.card-title').html(`<h1>${URL}</h1>`);
+                        $('.p.card-body').html(`<h3>${response.disease}<h1>`);
+                    }, error: function (error) {
+                        // console.log(error)
+                    }
+                })
+            })
+            $.ajax({
+                method: 'GET',
+                url: '{{config('app.python_url')}}' + '/getAllSymptoms',
+                success: function (response) {
+                    if (typeof response === 'object') {
+                        $.each(response, function (i, p) {
+                            $('.select-2').append($('<option></option>')
+                                .val(p)
+                                .html(p.toUpperCase().split('_').join(' ')));
+                        });
+                    }
+                }, error: function (error) {
+                    console.log(error)
+                }
+            })
+        })
+    </script>
