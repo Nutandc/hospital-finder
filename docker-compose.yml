@@ -1,0 +1,80 @@
+version: '3'
+
+networks:
+  hospitalfinder:
+    driver: bridge
+
+
+services:
+  site:
+    build:
+      context: .
+      dockerfile: nginx.dockerfile
+    container_name: H-nginx
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www/html:delegated
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - hospitalfinder
+
+  mysql:
+    image: mysql:5.7.29
+    container_name: H-mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: hospitalfinder
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Lifesucks@123
+      MYSQL_ROOT_PASSWORD: Lifesucks@123
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - hospitalfinder
+
+
+  php:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    container_name: H-php
+    volumes:
+      - ./:/var/www/html:delegated
+    networks:
+      - hospitalfinder
+
+
+  composer:
+    build:
+      context: .
+      dockerfile: composer.dockerfile
+    container_name: H-composer
+    volumes:
+      - ./:/var/www/html
+    working_dir: /var/www/html
+    depends_on:
+      - php
+    user: laravel
+    entrypoint: ['composer', '--ignore-platform-reqs']
+    networks:
+      - hospitalfinder
+
+  artisan:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    container_name: H-artisan
+    volumes:
+      - ./:/var/www/html:delegated
+    depends_on:
+      - mysql
+    working_dir: /var/www/html
+    user: laravel
+    entrypoint: ['php', '/var/www/html/artisan']
+    networks:
+      - hospitalfinder
+
