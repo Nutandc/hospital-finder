@@ -29,8 +29,8 @@ services:
     environment:
       MYSQL_DATABASE: hospitalfinder
       MYSQL_USER: root
-      MYSQL_PASSWORD: Lifesucks@123
-      MYSQL_ROOT_PASSWORD: Lifesucks@123
+      MYSQL_PASSWORD: 123456
+      MYSQL_ROOT_PASSWORD: 123456
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:

@@ -28,7 +28,7 @@ return [
 
     'env' => env('APP_ENV', 'production'),
 
-    'python_url' => env('PYTHON_URL', 'http://127.0.0.1:5000'),
+    'python_url' => env('PYTHON_URL', 'http://dpa.ittsutra.com/'),
 
     /*
     |--------------------------------------------------------------------------
