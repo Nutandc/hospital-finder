@@ -133,12 +133,12 @@
 
                             Predict with RandomForest
                         </button>
-                        <button type="submit"
-                                class="btn btn-secondary btn-block btn-flat px-4 py-3"
-                                value="PredictByNaiveBayes">
+{{--                        <button type="submit"--}}
+{{--                                class="btn btn-secondary btn-block btn-flat px-4 py-3"--}}
+{{--                                value="PredictByNaiveBayes">--}}
 
-                            Predict with Naive Bayes
-                        </button>
+{{--                            Predict with Naive Bayes--}}
+{{--                        </button>--}}
                     </div>
 
                 </div>
