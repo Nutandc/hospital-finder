@@ -108,12 +108,13 @@
                 url: '{{config('app.python_url')}}' + '/' + URL,
                 success: function (response) {
                     let template = `
-                        <div class="card-footer border-0" style="background-color: #fafafa;">
+                        <div class="card-footer border-0 look_for_hospital" style="background-color: #fafafa;">
                         <button class="btn btn-primary btn-block btn-flat px-4 py-3"
                          id="look_for_hospital">Look For a Hospital ? </button>
                         </div>
                         `
                     $('.p.card-title').html(`<h1>${URL}</h1>`);
+                    $('.services-section').find('#look_for_hospital').remove();
                     $('.p.card-body').html(`<h3>${response.disease}<h1>`).after($(template));
 
                 }, error: function (error) {
