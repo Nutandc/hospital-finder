@@ -105,6 +105,8 @@
                         's4': $('select[name="s4"]').val(),
                         's5': $('select[name="s5"]').val(),
                     },
+                    contentType: "application/json",
+                    dataType: "json",
                     url: '{{config('app.python_url')}}' + '/' + URL,
                     success: function (response) {
                         let template = `
