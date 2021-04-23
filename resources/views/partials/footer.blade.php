@@ -114,7 +114,7 @@
                         </div>
                         `
                     $('.p.card-title').html(`<h1>${URL}</h1>`);
-                    $('.services-section').find('#look_for_hospital').remove();
+                    $('.services-section').find('.look_for_hospital').remove();
                     $('.p.card-body').html(`<h3>${response.disease}<h1>`).after($(template));
 
                 }, error: function (error) {
