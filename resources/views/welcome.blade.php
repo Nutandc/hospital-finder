@@ -86,7 +86,7 @@
                             {{--                                <p>Ease while navigating through application with tonnes of features</p>--}}
                             {{--                            </div>--}}
                             {{--                        </div>--}}
-                                {{--                    </div>--}}
+                            {{--                    </div>--}}
                         </div>
                     </div>
                 </div>
@@ -125,20 +125,20 @@
                                 {{--                                value="{{config('app.python_url').'/PredictByDecisionTree'}}"--}}
                                 class="btn btn-primary btn-block btn-flat px-4 py-3"
                                 value="PredictByDecisionTree">
-                            Predict with Decision Tree
+                            Predict Disease
                         </button>
-                        <button type="submit"
-                                class="btn btn-info btn-block btn-flat px-4 py-3"
-                                value="PredictByRandomForest">
+                        {{--                        <button type="submit"--}}
+                        {{--                                class="btn btn-info btn-block btn-flat px-4 py-3"--}}
+                        {{--                                value="PredictByRandomForest">--}}
 
-                            Predict with RandomForest
-                        </button>
-{{--                        <button type="submit"--}}
-{{--                                class="btn btn-secondary btn-block btn-flat px-4 py-3"--}}
-{{--                                value="PredictByNaiveBayes">--}}
+                        {{--                            Predict with RandomForest--}}
+                        {{--                        </button>--}}
+                        {{--                        <button type="submit"--}}
+                        {{--                                class="btn btn-secondary btn-block btn-flat px-4 py-3"--}}
+                        {{--                                value="PredictByNaiveBayes">--}}
 
-{{--                            Predict with Naive Bayes--}}
-{{--                        </button>--}}
+                        {{--                            Predict with Naive Bayes--}}
+                        {{--                        </button>--}}
                     </div>
 
                 </div>
